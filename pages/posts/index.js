@@ -1,5 +1,4 @@
-import HeroComponent from "@/components/home-page/hero";
-import FeaturedPosts from "@/components/home-page/featured-posts";
+import AllPost from "@/components/posts/all-post";
 
 const DUMMY_POSTS = [
   {
@@ -12,13 +11,8 @@ const DUMMY_POSTS = [
   },
 ];
 
-function HomePage() {
-  return (
-    <>
-      <HeroComponent />
-      <FeaturedPosts posts={DUMMY_POSTS} />
-    </>
-  );
+function AllPostsPage() {
+  return <AllPost posts={DUMMY_POSTS} />;
 }
 
-export default HomePage;
+export default AllPostsPage;
