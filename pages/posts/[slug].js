@@ -3,13 +3,23 @@ import { getPostData, getPostAllFileNames } from "@/lib/post-util";
 import PostContent from "@/components/posts/post-detail/post-content";
 
 function PostPage({ post }) {
+  const auxPost = post
+    ? post
+    : {
+        title: "",
+        excerpt: "",
+        image: "",
+        isFeatured: false,
+        content: "",
+        date: "2024-01-01",
+      };
   return (
     <>
       <Head>
-        <title>{post.title}</title>
-        <meta name="description" content={post.excerpt} />
+        <title>{auxPost.title}</title>
+        <meta name="description" content={auxPost.excerpt} />
       </Head>
-      <PostContent post={post} />
+      <PostContent post={auxPost} />
     </>
   );
 }

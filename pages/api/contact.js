@@ -25,7 +25,7 @@ async function handler(req, res) {
     };
 
     try {
-      client = await connectMongoClient("personal-website");
+      client = await connectMongoClient();
     } catch (err) {
       res.status(500).json({ error: "Cannot connnect to MongoDB" });
       return;
