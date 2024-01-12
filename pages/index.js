@@ -1,24 +1,33 @@
+import Head from "next/head";
+import { getFeaturedPosts } from "@/lib/post-util";
 import HeroComponent from "@/components/home-page/hero";
 import FeaturedPosts from "@/components/home-page/featured-posts";
 
-const DUMMY_POSTS = [
-  {
-    date: "2023-02-10",
-    slug: "getting-started-nextjs",
-    title: "Getting Started with Next.js",
-    image: "getting-started-nextjs.png",
-    excerpt:
-      "Next.js is the react framework for productoin - it makes building fullstack React apps and sites a breeze and ships with built-in SSR.",
-  },
-];
-
-function HomePage() {
+function HomePage({ allPosts }) {
   return (
     <>
+      <Head>
+        <title>Daniil's Website</title>
+        <meta
+          name="description"
+          content="The projects that worked on druing my career"
+        />
+      </Head>
       <HeroComponent />
-      <FeaturedPosts posts={DUMMY_POSTS} />
+      <FeaturedPosts posts={allPosts} />
     </>
   );
+}
+
+export function getStaticProps() {
+  const allPosts = getFeaturedPosts();
+
+  return {
+    props: {
+      allPosts,
+    },
+    revalidate: 120,
+  };
 }
 
 export default HomePage;
